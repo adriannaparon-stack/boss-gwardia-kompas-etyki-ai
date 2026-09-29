@@ -1,0 +1,142 @@
+<!doctype html>
+<html lang="pl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Kompas Etyki AI · BOSS GWARDIA</title>
+  <meta name="description" content="Interaktywny symulator decyzji etycznych i prawnych dotyczących sztucznej inteligencji w marketingu. Materiał dydaktyczny dla studentów.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/styles.css">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Ccircle cx='16' cy='16' r='14' fill='%2314213d'/%3E%3Cpath d='M16 5l4 11-4 11-4-11z' fill='%23e0a526'/%3E%3C/svg%3E">
+</head>
+<body>
+  <header class="naglowek">
+    <div class="naglowek-wnetrze">
+      <a class="logo" href="#" aria-label="Kompas Etyki AI — strona startowa" onclick="location.reload();return false;">
+        <svg class="logo-kompas" viewBox="0 0 40 40" aria-hidden="true">
+          <circle cx="20" cy="20" r="18" fill="none" stroke="currentColor" stroke-width="2"/>
+          <path d="M20 6l5 14-5 14-5-14z" fill="var(--akcent)"/>
+          <path d="M20 20l5 0-5 14-5-14z" fill="currentColor" opacity=".35"/>
+          <circle cx="20" cy="20" r="2" fill="currentColor"/>
+        </svg>
+        <span class="logo-tekst"><span class="logo-boss">BOSS GWARDIA</span><span class="logo-nazwa">Kompas Etyki AI</span></span>
+      </a>
+      <button class="przycisk-link" type="button" data-otworz-o-projekcie>O projekcie</button>
+    </div>
+  </header>
+
+  <main id="tresc">
+    <!-- EKRAN STARTOWY -->
+    <section id="ekran-start" class="ekran ekran-start" aria-labelledby="start-tytul">
+      <p class="etykieta">Symulator decyzji · AI w marketingu</p>
+      <h1 id="start-tytul">Wolno czy warto?</h1>
+      <p class="wstep">Wcielasz się w specjalistę ds. marketingu, który musi podjąć decyzję w sytuacji z udziałem sztucznej inteligencji. Po każdym wyborze zobaczysz jego konsekwencje prawne i etyczne, a na końcu — kartę profilu swoich decyzji.</p>
+
+      <ul class="fakty" aria-label="Informacje o symulatorze">
+        <li><strong id="start-liczba">8</strong><span id="start-liczba-opis">scenariuszy</span></li>
+        <li><strong>~<span id="start-czas">10</span> min</strong><span>czas przejścia</span></li>
+        <li><strong>0</strong><span>zbieranych danych</span></li>
+      </ul>
+
+      <button id="przycisk-start" class="przycisk przycisk-glowny" type="button">Rozpocznij</button>
+
+      <div class="zasady">
+        <h2>Jak to działa</h2>
+        <ol>
+          <li>Przeczytaj opis sytuacji i wybierz decyzję, którą podjąłbyś/podjęłabyś w praktyce.</li>
+          <li>Zapoznaj się z uzasadnieniem, perspektywą etyczną i podstawą prawną.</li>
+          <li>Po ostatnim scenariuszu otrzymasz profil na czterech osiach: prawo, transparentność, autonomia i dane, skuteczność biznesowa.</li>
+        </ol>
+        <p class="drobny">Nie ma logowania ani kont. Twoje odpowiedzi nie są nigdzie zapisywane ani wysyłane — po zamknięciu karty znikają.</p>
+      </div>
+    </section>
+
+    <!-- EKRAN SCENARIUSZA -->
+    <section id="ekran-scenariusz" class="ekran" aria-labelledby="sc-tytul" hidden>
+      <div class="postep-wiersz">
+        <span id="postep-tekst" class="postep-tekst">Scenariusz 1 z 3</span>
+        <div id="postep" class="postep" role="progressbar" aria-label="Postęp" aria-valuemin="1" aria-valuenow="1" aria-valuemax="3">
+          <div id="postep-pasek" class="postep-pasek"></div>
+        </div>
+      </div>
+
+      <article class="scenariusz">
+        <p id="sc-obszar" class="etykieta"></p>
+        <h2 id="sc-tytul" class="sc-tytul"></h2>
+        <p id="sc-kontekst" class="sc-kontekst"></p>
+        <p id="sc-sytuacja" class="sc-sytuacja"></p>
+        <p id="sc-pytanie" class="sc-pytanie"></p>
+        <ol id="sc-opcje" class="opcje"></ol>
+      </article>
+
+      <section id="sc-feedback" class="feedback" aria-live="polite" hidden></section>
+    </section>
+
+    <!-- EKRAN WYNIKU -->
+    <section id="ekran-wynik" class="ekran" aria-labelledby="wynik-nazwa" hidden>
+      <p class="etykieta">Karta profilu decyzji</p>
+      <div id="karta-profil" class="karta-profil">
+        <div class="karta-gora">
+          <span id="wynik-symbol" class="karta-symbol" aria-hidden="true"></span>
+          <div>
+            <p class="karta-podtytul">Twój profil</p>
+            <h2 id="wynik-nazwa" class="karta-nazwa"></h2>
+          </div>
+        </div>
+        <p id="wynik-opis" class="karta-opis"></p>
+        <div id="wynik-osie" class="osie"></div>
+        <div class="karta-dwie">
+          <div><h3>Mocna strona</h3><p id="wynik-mocna"></p></div>
+          <div><h3>Na co uważać</h3><p id="wynik-uwaga"></p></div>
+        </div>
+        <p class="karta-stopka">Kompas Etyki AI · BOSS GWARDIA</p>
+      </div>
+
+      <h3 class="sekcja-tytul">Twoje decyzje</h3>
+      <p id="wynik-podsumowanie" class="drobny"></p>
+      <ol id="wynik-decyzje" class="decyzje"></ol>
+
+      <div class="akcje">
+        <button id="przycisk-od-nowa" class="przycisk przycisk-glowny" type="button">Zacznij od nowa</button>
+        <button class="przycisk przycisk-drugi" type="button" data-otworz-o-projekcie>O projekcie i źródła</button>
+      </div>
+    </section>
+  </main>
+
+  <footer class="stopka">
+    <p><strong>Materiał edukacyjny — nie stanowi porady prawnej.</strong> Wszystkie organizacje i osoby w scenariuszach są fikcyjne.</p>
+    <p id="stopka-stan"></p>
+    <p id="stopka-wersja" class="drobny"></p>
+  </footer>
+
+  <!-- OKNO: O PROJEKCIE -->
+  <dialog id="okno-o-projekcie" class="okno" aria-labelledby="okno-tytul">
+    <div class="okno-wnetrze">
+      <h2 id="okno-tytul">O projekcie</h2>
+      <p><strong>Kompas Etyki AI</strong> to symulator decyzji przygotowany jako materiał dydaktyczny do przedmiotu <em>AI w marketingu</em> (kierunki Media w biznesie oraz Zarządzanie). Łączy perspektywę prawną (AI Act, RODO, prawo autorskie, prawo ochrony konsumentów) z perspektywą etyczną (transparentność, autonomia, prywatność, rozliczalność).</p>
+      <p>Aplikacja powstała jako projekt finałowy <strong>BOSS GWARDIA</strong> w programie Gwardia AI.</p>
+
+      <h3>Ochrona danych</h3>
+      <p>Aplikacja nie wymaga logowania, nie używa plików cookies ani narzędzi analitycznych i nie przesyła odpowiedzi na żaden serwer. Wszystkie obliczenia odbywają się w przeglądarce użytkownika.</p>
+
+      <h3>Źródła</h3>
+      <ul class="zrodla">
+        <li>Baker, S., &amp; Martinson, D. L. (2001). The TARES test: Five principles for ethical persuasion. <em>Journal of Mass Media Ethics, 16</em>(2–3), 148–175.</li>
+        <li>Nissenbaum, H. (2010). <em>Privacy in context: Technology, policy, and the integrity of social life</em>. Stanford University Press.</li>
+        <li>Rozporządzenie Parlamentu Europejskiego i Rady (UE) 2016/679 z dnia 27 kwietnia 2016 r. w sprawie ochrony osób fizycznych w związku z przetwarzaniem danych osobowych i w sprawie swobodnego przepływu takich danych oraz uchylenia dyrektywy 95/46/WE (ogólne rozporządzenie o ochronie danych) (Dz. Urz. UE L 119 z 4.05.2016, s. 1).</li>
+        <li>Rozporządzenie Parlamentu Europejskiego i Rady (UE) 2024/1689 z dnia 13 czerwca 2024 r. w sprawie ustanowienia zharmonizowanych przepisów dotyczących sztucznej inteligencji (akt w sprawie sztucznej inteligencji) (Dz. Urz. UE L, 2024/1689, 12.07.2024).</li>
+        <li>Ustawa z dnia 23 kwietnia 1964 r. – Kodeks cywilny (Dz. U. 1964 nr 16 poz. 93 z późn. zm.).</li>
+        <li>Ustawa z dnia 4 lutego 1994 r. o prawie autorskim i prawach pokrewnych (Dz. U. 1994 nr 24 poz. 83 z późn. zm.).</li>
+        <li>Ustawa z dnia 23 sierpnia 2007 r. o przeciwdziałaniu nieuczciwym praktykom rynkowym (Dz. U. 2007 nr 171 poz. 1206 z późn. zm.).</li>
+      </ul>
+      <button id="zamknij-o-projekcie" class="przycisk przycisk-glowny" type="button">Zamknij</button>
+    </div>
+  </dialog>
+
+  <script src="js/scenariusze.js"></script>
+  <script src="js/profile.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>
